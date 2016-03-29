@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Acm | Web Chat</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- cdn from google to ensure jquery.  File linked below -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+    <!-- Chat script here in order to create a websocket connection and render when page rendered! -->
+    <script type="text/javascript">
+          //Database query here
+
+          $(function() {
+             var conn;
+             var msg = $("#msg");
+             var chat = $("#chat");
+             var image = "https://cdn0.iconfinder.com/data/icons/flatico/512/monitor_code__editor-512.png"
+
+             function appendChat(msg) {
+                 var d = chat[0]
+                 var doScroll = d.scrollTop == d.scrollHeight - d.clientHeight;
+                 appendMessage(msg);
+                 if (doScroll) {
+                     d.scrollTop = d.scrollHeight - d.clientHeight;
+                 }
+             }
+
+            //appends to chat
+             function appendMessage(msg) {
+                //var img strng
+                //add image stiring here to imgDiv
+                //add in time .now jquery func here.
+
+                var msgRt = $("<div class=\"chat-message right\">");
+                var imgDiv = $("<img class=\"message-avatar\" src=\""+image+"\" alt=\"An image of the user!\">");
+                var msgDiv        = $("<div class=\"message\">");
+                var authorLink    = $("<a class=\"message-author\" href=\"#\">");
+                var dateSpan      = $("<span class=\"message-date\">");
+                var contentSpan = $("<span class=\"message-content\">");
+                var closeDiv      = $("</div>");
+                var closeSpan     = $("</span>");
+                var closeLink     = $("</a>");
+
+                //appends the message to the chat
+                chat.append(msgRt.append(imgDiv).append(msgDiv.append(authorLink).append(dateSpan).append(contentSpan.append(msg))));
+                }
+
+             //TODO http://www.hongkiat.com/blog/jquery-insert-element-part1/  forms and creates given html string
+             //Nickname in submit from this connection.
+             $("#form").submit(function() {
+                 if (!conn) {
+                     return false;
+                 }
+                 if (!msg.val()) {
+                     return false;
+                 }
+                 conn.send(msg.val());
+                 //Resets to blank if sent
+                 msg.val("");
+                 return false
+             });
+
+             //create a websocket
+             if (window["WebSocket"]) {
+                 var loc = window.location, new_uri;
+                 if (loc.protocol === "https:") {
+                     new_uri = "wss:";
+                 } else {
+                     new_uri = "ws:";
+                 }
+                 new_uri += "//{{$}}"+ "/ws" + loc.pathname;
+                 conn = new WebSocket(new_uri);
+                 //onclose, onmessage, are  functions in js for handling websockets. Append chat is a function that is defined above
+                 conn.onclose = function(evt) {
+                     appendChat($("<div><b>You have been disconnected due to inactivity.</b></div>"))
+                 }
+                 conn.onmessage = function(evt) {
+                     appendChat($("<div class=\"message-content\">").text(evt.data))
+                 }
+             } else {
+                 appendChat($("<div><b>A browser with websocket support is required.</b></div>"))
+             }
+             });
+         </script>
+</head>
+
+<body>
+<div id="wrapper">
+    <nav class="navbar-default navbar-static-side" role="navigation">
+        <div class="sidebar-collapse">
+            <ul class="nav metismenu" id="side-menu">
+                <li class="nav-header">
+                    <div class="dropdown profile-element"> <span>
+                        <img alt="image" class="img-circle" src="img/profile_small.jpg" />
+                         </span>
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold"> {user.name}</strong>
+                         </span> <span class="text-muted text-xs block">Art Director <b class="caret"></b></span> </span> </a>
+                        <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                            <li><a href="profile.html">Profile</a></li>
+                            <li><a href="contacts.html">Contacts</a></li>
+                            <li><a href="mailbox.html">Mailbox</a></li>
+                            <li class="divider"></li>
+                            <li><a href="index.html">Logout</a></li>
+                        </ul>
+                    </div>
+                    <div class="logo-element">
+                        ACM
+                    </div>
+                </li>
+                <li class="active">
+                    <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">Home</span></a>
+                </li>
+                <li>
+                    <a href="off_canvas_menu.html"><i class="fa fa-pencil-square-o"></i> <span class="nav-label">Blog</span></a>
+                </li>
+                <li>
+                    <a href="chat_view.html"><i class="fa fa-comment-o"></i> <span class="nav-label">Discuss</span></a>
+                </li>
+                <li>
+                    <a href="metrics.html"><i class="fa fa-pie-chart"></i> <span class="nav-label">Meetup</span>  </a>
+                </li>
+                <li>
+                    <a href="widgets.html"><i class="fa fa-thumbs-o-up"></i> <span class="nav-label">Social</span></a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-github-square"></i> <span class="nav-label">Projects</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse">
+                        <li><a href="graph_flot.html">Flot Charts</a></li>
+                        <li><a href="graph_morris.html">Morris.js Charts</a></li>
+                        <li><a href="graph_rickshaw.html">Rickshaw Charts</a></li>
+                        <li><a href="graph_chartjs.html">Chart.js</a></li>
+                        <li><a href="graph_chartist.html">Chartist</a></li>
+                        <li><a href="c3.html">c3 charts</a></li>
+                        <li><a href="graph_peity.html">Peity Charts</a></li>
+                        <li><a href="graph_sparkline.html">Sparkline Charts</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-files-o"></i> <span class="nav-label">Other Pages</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse">
+                        <li><a href="search_results.html">Search results</a></li>
+                        <li><a href="lockscreen.html">Lockscreen</a></li>
+                        <li><a href="register.html">Invite a Member</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-picture-o"></i> <span class="nav-label">Gallery</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse">
+                        <li><a href="basic_gallery.html">Lightbox Gallery</a></li>
+                        <li><a href="slick_carousel.html">Slick Carousel</a></li>
+                        <li><a href="carousel.html">Bootstrap Carousel</a></li>
+                    </ul>
+                </li>
+                <li class="special_link">
+                    <a href="#"><i class="fa fa-database"></i> <span class="nav-label">Programming Help</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse">
+                        <li><a href="basic_gallery.html">Text a member</a></li>
+                        <li><a href="slick_carousel.html">Send a member an email</a></li>
+                        <li><a href="package.html">Look at member proficiencies</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div id="page-wrapper" class="gray-bg">
+        <div class="row border-bottom">
+            <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+                <div class="navbar-header">
+                    <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+                    <form role="search" class="navbar-form-custom" action="search_results.html">
+                        <div class="form-group">
+                            <input type="text" placeholder="Search for something..." class="form-control" name="top-search" id="top-search">
+                        </div>
+                    </form>
+                </div>
+                <ul class="nav navbar-top-links navbar-right">
+                    <li>
+                        <span class="m-r-sm text-muted welcome-message">Eastern | Acm </span>
+                    </li>
+                    <li>
+                        <a class="right-sidebar-toggle">
+                            <i class="fa fa-pie-chart"></i>
+                        </a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                            <i class="fa fa-chain-broken"></i>  <span class="label label-primary">8</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-alerts">
+                            <li>
+                                <a href="mailbox.html">
+                                    <div>
+                                        <i class="fa fa-envelope fa-fw"></i> You have 16 messages
+                                        <span class="pull-right text-muted small">4 minutes ago</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="profile.html">
+                                    <div>
+                                        <i class="fa fa-twitter fa-fw"></i> 3 New Followers
+                                        <span class="pull-right text-muted small">12 minutes ago</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="grid_options.html">
+                                    <div>
+                                        <i class="fa fa-upload fa-fw"></i> Server Rebooted
+                                        <span class="pull-right text-muted small">4 minutes ago</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <div class="text-center link-block">
+                                    <a href="notifications.html">
+                                        <strong>See All Alerts</strong>
+                                        <i class="fa fa-angle-right"></i>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="login.html">
+                            <i class="fa fa-power-off"></i> Log out
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="row wrapper border-bottom white-bg page-heading">
+            <div class="col-lg-10">
+                <h2>Chat</h2>
+                <ol class="breadcrumb">
+                    <li>
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li class="active">
+                        <strong>Chat</strong>
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox chat-view">
+                        <div class="ibox-content">
+                            <div class="row">
+                                <div class="col-md-9 ">
+                                    <div id="chat" class="chat-discussion" style="height:50em"></div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="chat-users">
+                                        <div class="users-list">
+                                            <div class="chat-user">
+                                                <a href="/0">
+                                                    <div class="chat-user-name">General Chat</div>
+                                                </a>
+                                            </div>
+                                            <div class="chat-user">
+                                                <a href="/1">
+                                                    <div class="chat-user-name">Meetings</div>
+                                                </a>
+                                            </div>
+                                            <div class="chat-user">
+                                                <a href="/2">
+                                                    <div class="chat-user-name">Random</div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="chat-message-form">
+                                        <form id="form" class="form-group">
+                                            <input type="submit" value="Send message" />
+                                            <input type="text" id="msg" size="128"/>   <!-- this is not responsive -->
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer" >
+            <div>
+                <strong>Eastern | Acm &copy; 2016</strong>
+            </div>
+        </div>
+    </div>
+    <div class="small-chat-box fadeInRight animated">
+
+        <div class="heading" draggable="true">
+            Small chat
+        </div>
+
+        <div class="content">
+
+            <div class="left">
+                <div class="author-name">
+                    Monica Jackson <small class="chat-date">
+                    10:02 am
+                </small>
+                </div>
+                <div class="chat-message active">
+                    Lorem Ipsum is simply dummy text input.
+                </div>
+
+            </div>
+            <div class="right">
+                <div class="author-name">
+                    Mick Smith
+                    <small class="chat-date">
+                        11:24 am
+                    </small>
+                </div>
+                <div class="chat-message">
+                    Lorem Ipsum is simpl.
+                </div>
+            </div>
+            <div class="left">
+                <div class="author-name">
+                    Alice Novak
+                    <small class="chat-date">
+                        08:45 pm
+                    </small>
+                </div>
+                <div class="chat-message active">
+                    Check this stock char.
+                </div>
+            </div>
+            <div class="right">
+                <div class="author-name">
+                    Anna Lamson
+                    <small class="chat-date">
+                        11:24 am
+                    </small>
+                </div>
+                <div class="chat-message">
+                    The standard chunk of Lorem Ipsum
+                </div>
+            </div>
+            <div class="left">
+                <div class="author-name">
+                    Mick Lane
+                    <small class="chat-date">
+                        08:45 pm
+                    </small>
+                </div>
+                <div class="chat-message active">
+                    I belive that. Lorem Ipsum is simply dummy text.
+                </div>
+            </div>
+        </div>
+        <div class="form-chat">
+            <div class="input-group input-group-sm"><input type="text" class="form-control"> <span class="input-group-btn"> <button
+                    class="btn btn-primary" type="button">Send
+            </button> </span></div>
+        </div>
+    </div>
+    <div id="small-chat">
+        <span class="badge badge-warning pull-right">5</span>
+        <a class="open-small-chat">
+            <i class="fa fa-comments"></i>
+        </a>
+    </div>
+</div>
+
+<!-- Mainly scripts -->
+<script src="js/jquery-2.1.1.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+<!-- Custom and plugin javascript -->
+<script src="js/inspinia.js"></script>
+<script src="js/plugins/pace/pace.min.js"></script>
+
+<script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+</body>
+</html>

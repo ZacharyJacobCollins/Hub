@@ -1,0 +1,83 @@
+<component name="libraryTable">
+  <library name="GOPATH &lt;HubHtml&gt;">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../../../.git" />
+      <root url="file://$PROJECT_DIR$/../.." />
+      <root url="file://$PROJECT_DIR$/../../../golang.org" />
+      <root url="file://$PROJECT_DIR$/../../../google.golang.org" />
+      <root url="file://$PROJECT_DIR$/../../../Thumbs.db" />
+      <root url="file://$PROJECT_DIR$/../../../gopkg.in" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <excluded>
+      <root url="file://$PROJECT_DIR$/../DevShift/.git" />
+      <root url="file://$PROJECT_DIR$/../Tester/Hub_DevBranch/html/welcome/assets/.sass-cache" />
+      <root url="file://$PROJECT_DIR$/../../gorilla/sessions/.git" />
+      <root url="file://$PROJECT_DIR$/../Hub_DevBranch/html/welcome/.git" />
+      <root url="file://$PROJECT_DIR$/../../gorilla/pat/.git" />
+      <root url="file://$PROJECT_DIR$/../../dgrijalva/jwt-go/.git" />
+      <root url="file://$PROJECT_DIR$/../sendgridJWT/.idea" />
+      <root url="file://$PROJECT_DIR$/../../../golang.org/x/net/http2/testdata" />
+      <root url="file://$PROJECT_DIR$/../TrueGothLogin/goth/.git" />
+      <root url="file://$PROJECT_DIR$/../../../golang.org/x/net/html/testdata" />
+      <root url="file://$PROJECT_DIR$/../DevHub/.git" />
+      <root url="file://$PROJECT_DIR$/../Tester/Hub_DevBranch/.idea" />
+      <root url="file://$PROJECT_DIR$/../Hub_DevBranch/html/welcome/assets/.sass-cache" />
+      <root url="file://$PROJECT_DIR$/../go-jwt-middleware/.idea" />
+      <root url="file://$PROJECT_DIR$/../../gorilla/securecookie/.git" />
+      <root url="file://$PROJECT_DIR$/../go-jwt-middleware/.git" />
+      <root url="file://$PROJECT_DIR$/../../auth0/go-jwt-middleware/.git" />
+      <root url="file://$PROJECT_DIR$/../gothLogin/.idea" />
+      <root url="file://$PROJECT_DIR$/../../../golang.org/x/net/html/charset/testdata" />
+      <root url="file://$PROJECT_DIR$/../../mrjones/oauth/.git" />
+      <root url="file://$PROJECT_DIR$/../../smartystreets/assertions/internal/oglemock/generate/testdata" />
+      <root url="file://$PROJECT_DIR$/../../../gopkg.in/mgo.v2/.git" />
+      <root url="file://$PROJECT_DIR$/../../bmizerany/pat/.git" />
+      <root url="file://$PROJECT_DIR$/../Shift/.git" />
+      <root url="file://$PROJECT_DIR$/../Shift/.idea" />
+      <root url="file://$PROJECT_DIR$/../goth/.git" />
+      <root url="file://$PROJECT_DIR$/../mongotest/.git" />
+      <root url="file://$PROJECT_DIR$/../pat/.git" />
+      <root url="file://$PROJECT_DIR$/../../markbates/goth/.git" />
+      <root url="file://$PROJECT_DIR$/../../smartystreets/assertions/internal/oglemock/createmock/testdata" />
+      <root url="file://$PROJECT_DIR$/../../../golang.org/x/crypto/ssh/testdata" />
+      <root url="file://$PROJECT_DIR$/../Tester/Hub_DevBranch/.git" />
+      <root url="file://$PROJECT_DIR$/../FacebookOauth/.git" />
+      <root url="file://$PROJECT_DIR$/../../codegangsta/negroni/.git" />
+      <root url="file://$PROJECT_DIR$/../../../golang.org/x/crypto/sha3/testdata" />
+      <root url="file://$PROJECT_DIR$/../Wiki/.git" />
+      <root url="file://$PROJECT_DIR$/../../../golang.org/x/net/.git" />
+      <root url="file://$PROJECT_DIR$/../golang-jwt-authentication-api-sample/.git" />
+      <root url="file://$PROJECT_DIR$/../facebooklogin/.git" />
+      <root url="file://$PROJECT_DIR$/../../mikejs/gomongo/.git" />
+      <root url="file://$PROJECT_DIR$/../../smartystreets/goconvey/.git" />
+      <root url="file://$PROJECT_DIR$/../../../golang.org/x/oauth2/google/testdata" />
+      <root url="file://$PROJECT_DIR$/../../../golang.org/x/crypto/.git" />
+      <root url="file://$PROJECT_DIR$/../../satori/go.uuid/.git" />
+      <root url="file://$PROJECT_DIR$/../go-plivo/.git" />
+      <root url="file://$PROJECT_DIR$/../../../golang.org/x/oauth2/.git" />
+      <root url="file://$PROJECT_DIR$/../../../gopkg.in/unrolled/render.v1/.git" />
+      <root url="file://$PROJECT_DIR$/../../jtolds/gls/.git" />
+      <root url="file://$PROJECT_DIR$/../../garyburd/redigo/.git" />
+      <root url="file://$PROJECT_DIR$/../../../google.golang.org/appengine/.git" />
+      <root url="file://$PROJECT_DIR$/../../../.git" />
+      <root url="file://$PROJECT_DIR$/../../gorilla/mux/.git" />
+      <root url="file://$PROJECT_DIR$/../../google/go-querystring/.git" />
+      <root url="file://$PROJECT_DIR$/.idea" />
+      <root url="file://$PROJECT_DIR$/../../gorilla/context/.git" />
+      <root url="file://$PROJECT_DIR$/../facebooklogin/.idea" />
+      <root url="file://$PROJECT_DIR$/../Tester/.git" />
+      <root url="file://$PROJECT_DIR$/../hpackage/.git" />
+      <root url="file://$PROJECT_DIR$/../../joho/godotenv/.git" />
+      <root url="file://$PROJECT_DIR$/../../antonholmquist/jason/.git" />
+      <root url="file://$PROJECT_DIR$/../Hub_DevBranch/.idea" />
+      <root url="file://$PROJECT_DIR$/../../smartystreets/assertions/.git" />
+      <root url="file://$PROJECT_DIR$/../Hub_DevBranch/.git" />
+      <root url="file://$PROJECT_DIR$/../TrueGothLogin/.idea" />
+      <root url="file://$PROJECT_DIR$/../DevShift/.idea" />
+      <root url="file://$PROJECT_DIR$" />
+      <root url="file://$PROJECT_DIR$/../../gorilla/websocket/.git" />
+    </excluded>
+  </library>
+</component>
