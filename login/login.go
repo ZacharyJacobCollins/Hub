@@ -10,9 +10,6 @@
      securecookie.GenerateRandomKey(64),
      securecookie.GenerateRandomKey(32))
 
- // ..
-
-
 
  const indexPage = `
  <h1>Login</h1>

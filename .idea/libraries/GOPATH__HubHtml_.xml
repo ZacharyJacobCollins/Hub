@@ -21,6 +21,7 @@
       <root url="file://$PROJECT_DIR$/../../../golang.org/x/net/http2/testdata" />
       <root url="file://$PROJECT_DIR$/../TrueGothLogin/goth/.git" />
       <root url="file://$PROJECT_DIR$/../../../golang.org/x/net/html/testdata" />
+      <root url="file://$PROJECT_DIR$/.git" />
       <root url="file://$PROJECT_DIR$/../DevHub/.git" />
       <root url="file://$PROJECT_DIR$/../Tester/Hub_DevBranch/.idea" />
       <root url="file://$PROJECT_DIR$/../Hub_DevBranch/html/welcome/assets/.sass-cache" />
